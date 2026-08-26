@@ -1,0 +1,666 @@
+{
+  "exact_matches": {
+    "salom": [
+      "Assalomu alaykum! 😊",
+      "Salom! Qalaysiz?",
+      "Salom-salom! 👋",
+      "Ooo, salom! 😄",
+      "Salom! Guruhga xush kelibsiz!",
+      "Va alaykum assalom! 😊"
+    ],
+    "assalom": [
+      "Va alaykum assalom! 😊",
+      "Va alaykum assalom va rahmatulloh!",
+      "Assalom! Qalaysizlar?"
+    ],
+    "assalomu alaykum": [
+      "Va alaykum assalom va rahmatulloh! 😊",
+      "Va alaykum assalom! Xush kelibsiz!",
+      "Va alaykum assalom! Ishlar yaxshimi?"
+    ],
+    "assalom aleykum": [
+      "Va alaykum assalom! 😊",
+      "Va alaykum assalom va rahmatulloh!"
+    ],
+    "qalaysiz": [
+      "Rahmat, yaxshiman! O'zingiz yaxshimisiz?",
+      "Alhamdulillah, yaxshi! Sizda-chi? 😊",
+      "Zo'r, rahmat!",
+      "Yaxshi yuribman 😄",
+      "Kayfiyat a'lo!"
+    ],
+    "qalesiz": [
+      "Rahmat, yaxshi! O'zingiz-chi? 😊",
+      "Zo'r, siz qalesiz?",
+      "Yaxshiman, rahmat!"
+    ],
+    "qandaysiz": [
+      "Alhamdulillah, yaxshi! Siz qandaysiz?",
+      "Rahmat, juda yaxshi 😊",
+      "Zo'r! Sizda nima gaplar?"
+    ],
+    "nima gap": [
+      "Tinchlik, o'zingizda nima gap?",
+      "Hammasi joyida 😄",
+      "Yaxshilik! Sizlarda-chi?",
+      "Tinch, guruhni kuzatib o'tiribman 😂",
+      "Gap ko'p, qaysisidan boshlaymiz? 😄"
+    ],
+    "nima yangilik": [
+      "Hozircha yangilik yo'q 😄",
+      "Tinchlik, hammasi joyida!",
+      "Sizlarda nima yangilik?",
+      "Yangilik kutib o'tiribman 😂"
+    ],
+    "rahmat": [
+      "Arzimaydi! 😊",
+      "Doim xizmatga tayyorman!",
+      "Sog' bo'ling!",
+      "Hechqisi yo'q 😄",
+      "Marhamat!"
+    ],
+    "tashakkur": [
+      "Arzimaydi! 😊",
+      "Salomat bo'ling!",
+      "Doim xizmatga tayyorman!"
+    ],
+    "xayr": [
+      "Xayr! Yaxshi dam oling! 👋",
+      "Ko'rishguncha!",
+      "Salomat bo'ling!",
+      "Yana kutib qolamiz 😊"
+    ],
+    "hayr": [
+      "Xayr! 👋",
+      "Ko'rishguncha 😊",
+      "Yaxshi qoling!"
+    ],
+    "kimsan": [
+      "Men guruhda suhbatlashadigan botman 🤖",
+      "Men sizlarning suhbatdosh botingizman 😊",
+      "Suhbatdosh Botman! Sizlar bilan guruhda suhbatlashib turaman.",
+      "Men shu guruhning kichkina yordamchisiman 😄"
+    ],
+    "isming nima": [
+      "Mening ismim Suhbatdosh Bot 😊",
+      "Meni shunchaki do'st deb chaqirishingiz mumkin 😄",
+      "Ismim Suhbatdosh Bot 🤖"
+    ],
+    "botmisan": [
+      "Ha, botman 🤖",
+      "Ha, lekin odamlar bilan suhbatlashishni yaxshi ko'raman 😄",
+      "Ha, meni ushlab oldingiz 😂",
+      "Botman, lekin yomon bot emasman 😎"
+    ],
+    "nima qilyapsan": [
+      "Sizlar bilan suhbatlashib o'tiribman 😄",
+      "Guruhni kuzatyapman 👀",
+      "Kimdir menga yozishini kutyapman 😂",
+      "Hozircha shu yerda o'tiribman 🤖"
+    ],
+    "uxlayapsanmi": [
+      "Botlar uxlamaydi 😎",
+      "Yo'q, men doim uyg'oqman 🤖",
+      "Siz uxlang, men guruhni kuzatib turaman 😂"
+    ],
+    "uyg'oqmisan": [
+      "Ha, uyg'oqman 😎",
+      "Botman-ku, uxlamayman 😂",
+      "Doim xizmatdaman 🤖"
+    ],
+    "yaxshimisan": [
+      "Ha, rahmat! 😊",
+      "Alhamdulillah, yaxshiman!",
+      "Zo'rman 😎",
+      "Yaxshi, siz ham yaxshimisiz?"
+    ],
+    "zerikdim": [
+      "Zerikmang! Biror qiziq mavzu boshlaylik 😄",
+      "O'yin o'ynash kerak shekilli 😂",
+      "Kimda qiziq mavzu bor?",
+      "Zerikishga ruxsat yo'q 😎",
+      "Keling, suhbatlashamiz!"
+    ],
+    "charchadim": [
+      "Biroz dam oling ☕",
+      "Dam olishni unutmang!",
+      "Charchagan bo'lsangiz, ozgina hordiq chiqaring 😊",
+      "Bir piyola choy yordam beradi ☕"
+    ],
+    "uyqum kelyapti": [
+      "Unda telefonni qo'yib, uxlab oling 😴",
+      "Xayrli tun oldindan 😂",
+      "Uyquni ushlab o'tirmang, dam oling!",
+      "Men ham siz bilan uxlay olmayman, botman 😂"
+    ],
+    "kayfiyat qanday": [
+      "Kayfiyat zo'r! 😎 Sizda-chi?",
+      "A'lo darajada 😊",
+      "Siz yozganingizdan keyin kayfiyatim ko'tarildi 😂",
+      "100 foiz! 🔥"
+    ],
+    "kayfiyatim yo'q": [
+      "Nima bo'ldi? 😕",
+      "Xafa bo'lmang, hammasi yaxshi bo'ladi 😊",
+      "Keling, kayfiyatni ko'taramiz 😄",
+      "Biror narsa bo'ldimi?"
+    ],
+    "xafa bo'ldim": [
+      "Nima bo'ldi? Istasangiz aytib bering.",
+      "Xafa bo'lmang, hammasi o'tib ketadi 😊",
+      "Suhbatlashib olamiz, balki kayfiyatingiz ko'tarilar.",
+      "Yonimizdamiz, do'stim ❤️"
+    ],
+    "ha": [
+      "Zo'r! 😄",
+      "Tushunarli!",
+      "Mayli 😊",
+      "Gap yo'q!",
+      "Ajoyib!"
+    ],
+    "xa": [
+      "Bo'ldi 😄",
+      "Mayli!",
+      "Kelishdik!",
+      "Zo'r!"
+    ],
+    "yo'q": [
+      "Mayli, tushundim 😊",
+      "Xo'p bo'ladi!",
+      "Unda boshqa safar 😄",
+      "Tushunarli!"
+    ],
+    "yo": [
+      "Mayli 😄",
+      "Tushunarli!",
+      "Xo'p!"
+    ],
+    "yaxshi": [
+      "Zo'r! 😊",
+      "Yaxshi bo'lsa, yaxshi-da 😄",
+      "Ajoyib!",
+      "Shunaqa bo'lsin doim!"
+    ],
+    "zo'r": [
+      "Ana endi gap! 🔥",
+      "Zo'r bo'lsa, gap yo'q 😎",
+      "Doim shunaqa bo'lsin!",
+      "Kayfiyatlar zo'r ekan 😂"
+    ],
+    "gap yo'q": [
+      "Ana shunaqa! 😎",
+      "Gap bo'lishi ham shart emas 😂",
+      "Zo'r ketayapti!",
+      "Gap yo'q bo'lsa, tinchlik 😂"
+    ],
+    "mayli": [
+      "Bo'ldi, kelishdik 👍",
+      "Xo'p 😊",
+      "Mayli unda!",
+      "Gap tamom 😄"
+    ],
+    "xo'p": [
+      "Bo'ldi 😄",
+      "Kelishdik!",
+      "Xo'p bo'ladi!",
+      "👍"
+    ],
+    "tushunarli": [
+      "Zo'r! 😊",
+      "Ajoyib!",
+      "Unda hammasi joyida 😄",
+      "Tushunganingiz yaxshi!"
+    ],
+    "bilmayman": [
+      "Men ham ba'zida bilmay qolaman 😂",
+      "Birgalashib aniqlab olamiz 😄",
+      "Qiziq, o'zim ham bilishni xohladim.",
+      "Google kerak bo'lib qoldi shekilli 😂"
+    ],
+    "bilasanmi": [
+      "Bilishga harakat qilaman 😎",
+      "Aytingchi, balki bilarman!",
+      "Qani, savolni bering 😊"
+    ],
+    "nima bo'ldi": [
+      "Tinchlikmi? 👀",
+      "Nima bo'lganini aytingchi!",
+      "Men ham qiziqib qoldim 😂",
+      "Nima gap bo'ldi?"
+    ],
+    "voy": [
+      "Voy-voy, nima bo'ldi? 😂",
+      "Nima gap? 👀",
+      "Shunaqa hayron bo'ladigan narsa ekanmi? 😄"
+    ],
+    "eee": [
+      "Eee, nima bo'ldi? 😂",
+      "Eee demang, gapiring 😄",
+      "Nima gap o'zi?"
+    ],
+    "uff": [
+      "Uff, nima bo'ldi? 😅",
+      "Charchoq sezilyapti 😂",
+      "Hammasi joyiga tushadi 😊"
+    ],
+    "rostdanmi": [
+      "Ha, rostdan 😄",
+      "Rostdan ham!",
+      "Ishonmasangiz yana aytaman 😂",
+      "Ha, hazil emas!"
+    ],
+    "jiddiymi": [
+      "Ha, juda jiddiy 😎",
+      "Jiddiy gap!",
+      "Yo'q, hazil qildim 😂",
+      "Buni o'zingiz hal qiling 😄"
+    ],
+    "hazil": [
+      "Hazilsiz guruh zerikib qoladi 😂",
+      "Men ham hazilni yaxshi ko'raman!",
+      "Davom ettiramizmi? 😎"
+    ],
+    "kulma": [
+      "Xo'p, kulmayman 😂",
+      "Mayli, jiddiy rejim yoqildi 😐",
+      "Harakat qilaman 😄"
+    ],
+    "kuldim": [
+      "Demak vazifamni bajardim 😂",
+      "Kulgi foydali 😄",
+      "Siz kulgan bo'lsangiz, men xursandman!"
+    ],
+    "omad": [
+      "Rahmat! Sizga ham omad! 🍀",
+      "Omad hammamizga yor bo'lsin!",
+      "Sizga ham omad 😊"
+    ],
+    "baraka": [
+      "Baraka toping! 😊",
+      "Ishlaringizga baraka!",
+      "Baraka doimiy hamrohimiz bo'lsin 🤲"
+    ],
+    "xayrli tong": [
+      "Xayrli tong! ☀️",
+      "Kuningiz omadli o'tsin!",
+      "Xayrli tong, guruh ahli! 😊"
+    ],
+    "hayrli tong": [
+      "Xayrli tong! ☀️",
+      "Kuningiz xayrli o'tsin!"
+    ],
+    "xayrli kun": [
+      "Xayrli kun! 😊",
+      "Ishlaringizga omad!",
+      "Kuningiz ajoyib o'tsin!"
+    ],
+    "hayrli kun": [
+      "Xayrli kun! Ishlaringizga omad!"
+    ],
+    "xayrli kech": [
+      "Xayrli kech! 🌙",
+      "Oqshomingiz maroqli o'tsin!",
+      "Kuningiz qanday o'tdi?"
+    ],
+    "hayrli kech": [
+      "Xayrli kech! 🌙",
+      "Maroqli hordiq tilayman!"
+    ],
+    "xayrli tun": [
+      "Xayrli tun! Shirin tushlar 😴🌙",
+      "Yaxshi dam oling!",
+      "Ertangi kun omadli kelsin!"
+    ],
+    "hayrli tun": [
+      "Xayrli tun! Tinch dam oling 🌙"
+    ],
+    "nima yeyapsan": [
+      "Men botman, ovqat yemayman 😂",
+      "Siz yeyayotgan narsadan menga ham yuboring 😄",
+      "Hozircha virtual ovqat bilan kun o'tkazyapman 🤖"
+    ],
+    "ochman": [
+      "Unda ovqatlanib oling 😄",
+      "Och yurish yaxshi emas!",
+      "Men ham virtual taom buyurtma qilaymi? 😂"
+    ],
+    "choy": [
+      "Choy bo'lsa meni ham chaqiring ☕😂",
+      "Choy — yaxshi tanlov!",
+      "Bir piyola choyga gap yo'q ☕"
+    ],
+    "kofe": [
+      "Kofe va yaxshi suhbat — zo'r kombinatsiya ☕😎",
+      "Kofe ichib kayfiyatni ko'taramiz!",
+      "Menga ham virtual kofe bering 😂"
+    ],
+    "sevaman": [
+      "Voy, guruhda romantika boshlandi shekilli 😂❤️",
+      "Sevgi yaxshi narsa ❤️",
+      "Kim baxtli ekan? 👀😂"
+    ],
+    "sevgi": [
+      "Sevgi haqida gap ketyaptimi? 👀❤️",
+      "Romantika boshlandi 😂",
+      "Sevgi — qiziq mavzu 😊"
+    ],
+    "do'stim": [
+      "Labbay, do'stim 😄",
+      "Ha, do'stim! Nima gap?",
+      "Do'stlik abadiy bo'lsin 🤝"
+    ],
+    "aka": [
+      "Labbay, aka 😄",
+      "Ha, aka, eshitaman!",
+      "Buyuring, aka 😎"
+    ],
+    "uka": [
+      "Labbay, uka 😄",
+      "Ha, uka, nima gap?",
+      "Eshitaman, uka!"
+    ],
+    "jonim": [
+      "Voy, shunaqa erkalatib yubormang 😂",
+      "Labbay 😄",
+      "Nima gap, jonim? 😂"
+    ],
+    "qayerdasan": [
+      "Shu yerdaman 😎",
+      "Guruhdaman-ku 😂",
+      "Sizlar bilan birga shu yerda!"
+    ],
+    "kel": [
+      "Qayerga? 😄",
+      "Hozir virtual ravishda keldim 😂",
+      "Mana, keldim!"
+    ],
+    "kut": [
+      "Kutaman 😄",
+      "Xo'p, kutib turaman!",
+      "Mayli, shoshilmaymiz."
+    ],
+    "kutib tur": [
+      "Xo'p, kutib turibman 😄",
+      "Mayli!",
+      "Kutish rejimi yoqildi 😂"
+    ]
+  },
+  "contains_matches": {
+    "salom": [
+      "Salom! 👋",
+      "Assalomu alaykum! 😊",
+      "Salom-salom!",
+      "Ooo, salom! 😄"
+    ],
+    "rahmat": [
+      "Arzimaydi! 😊",
+      "Doim xizmatga tayyorman!",
+      "Marhamat!"
+    ],
+    "nima gap": [
+      "Tinchlikmi? 😄",
+      "Nima gaplar?",
+      "Hammasi joyida!"
+    ],
+    "nima qilyapsan": [
+      "Guruhni kuzatib turibman 👀",
+      "Sizlar bilan suhbatlashyapman 😄"
+    ],
+    "zerik": [
+      "Zerikmang 😄 Biror mavzu boshlaylik!",
+      "O'yin o'ynash kerak shekilli 😂"
+    ],
+    "charch": [
+      "Biroz dam oling ☕",
+      "Dam olishni unutmang!"
+    ],
+    "xafa": [
+      "Nima bo'ldi? 😕",
+      "Xafa bo'lmang, hammasi yaxshi bo'ladi 😊"
+    ],
+    "kul": [
+      "😂😂😂",
+      "Kulgi foydali!",
+      "Kayfiyatlar ko'tarilibdi 😄"
+    ],
+    "jiddiy": [
+      "Jiddiy rejim yoqildi 😎",
+      "Mayli, jiddiy gaplashamiz."
+    ],
+    "admin kim": [
+      "Adminlarni guruh ma'lumotlaridan ko'rishingiz mumkin.",
+      "Adminlar hozir qayerdaligini men ham bilmayman 😂",
+      "Admin kerakmi? 👀"
+    ],
+    "admin qani": [
+      "Adminlarni chaqiraymi? 😂",
+      "Adminlar ham dam olayotgandir 😄",
+      "Admin qidiruvi boshlandi 🔎"
+    ],
+    "kim bor": [
+      "Men borman 😎",
+      "Hamma shu yerda shekilli 👀",
+      "Suhbatdosh Bot xizmatda! 🤖"
+    ],
+    "kim online": [
+      "Men doim online 😂",
+      "Botlar uchun online/offline tushunchasi boshqacha 😎",
+      "Hamma jim o'tiribdi shekilli 👀"
+    ],
+    "gaplashamiz": [
+      "Albatta! Qaysi mavzuda? 😄",
+      "Boshladik! Kim birinchi gapiradi?",
+      "Men tayyorman 😎"
+    ],
+    "suhbat": [
+      "Suhbatni boshlaymizmi? 😊",
+      "Qiziq mavzu topish kerak!",
+      "Men suhbatga doim tayyorman 🤖"
+    ],
+    "o'yin": [
+      "O'yin dedingizmi? 👀🎮",
+      "Men ham o'yinga tayyorman!",
+      "Qaysi o'yinni boshlaymiz? 😎"
+    ],
+    "kim yutdi": [
+      "Menimcha, eng ko'p kulgan odam yutdi 😂",
+      "Natijani adminlardan so'rash kerak 😄",
+      "Hali g'olib aniqlanmadi!"
+    ],
+    "qachon": [
+      "Tez orada 😄",
+      "Vaqt ko'rsatadi!",
+      "Buni bilish uchun biroz kutamiz 😂"
+    ],
+    "nega": [
+      "Chunki shunaqa bo'lib qoldi 😂",
+      "Buni o'zim ham bilishga harakat qilyapman 😄",
+      "Qiziq savol 👀"
+    ],
+    "qayerda": [
+      "Menimcha, shu atrofda 😄",
+      "Aniq manzilni bilmayman 😂",
+      "Qidiruv boshlandi 🔎"
+    ],
+    "kim": [
+      "Kimligini men ham bilishni xohlayapman 👀",
+      "Qaysi kim? 😄",
+      "Sirli savol ekan 😂"
+    ],
+    "voy": [
+      "Voy-voy! 😂",
+      "Nima bo'ldi? 👀",
+      "Shunaqa hayron bo'ladigan gapmi? 😄"
+    ],
+    "uff": [
+      "Uff, nima bo'ldi? 😅",
+      "Charchoq sezilyapti!",
+      "Bir oz dam oling 😊"
+    ],
+    "eee": [
+      "Eee, gapiring endi 😂",
+      "Nima bo'ldi? 😄",
+      "Eee demang, hammasi yaxshi bo'ladi!"
+    ],
+    "haha": [
+      "😂😂",
+      "Kulgi boshlandi!",
+      "Men ham kulib yubordim 😂"
+    ],
+    "ahaha": [
+      "😂😂😂",
+      "Kayfiyat zo'r ekan!",
+      "Shunaqa kulib turinglar 😄"
+    ],
+    "🤣": [
+      "😂😂😂",
+      "Nimaga bunaqa kulyapsiz? 😄",
+      "Men ham kuldim 😂"
+    ],
+    "😂": [
+      "😂😂",
+      "Kulgi yuqumli ekan!",
+      "Nima kulgili bo'ldi? 😄"
+    ],
+    "🔥": [
+      "🔥🔥🔥",
+      "Ana endi gap!",
+      "Zo'r ketayapti 😎"
+    ],
+    "❤️": [
+      "❤️😊",
+      "Mehr-muhabbat ko'payaversin!",
+      "Romantika boshlandi shekilli 😂"
+    ],
+    "👍": [
+      "👍😎",
+      "Zo'r!",
+      "Kelishdik!"
+    ],
+    "omad": [
+      "Rahmat! Sizga ham omad 🍀",
+      "Omad hammamizga!",
+      "Sizga ham omad 😊"
+    ],
+    "xayrli tong": [
+      "Xayrli tong! ☀️",
+      "Kuningiz omadli o'tsin!",
+      "Bugun ham kayfiyatlar baland bo'lsin 😄"
+    ],
+    "xayrli kun": [
+      "Xayrli kun! 😊",
+      "Ishlaringizga omad!",
+      "Kuningiz yaxshi o'tsin!"
+    ],
+    "xayrli kech": [
+      "Xayrli kech! 🌙",
+      "Oqshomingiz maroqli o'tsin!",
+      "Yaxshi dam oling!"
+    ],
+    "xayrli tun": [
+      "Xayrli tun! 😴🌙",
+      "Shirin tushlar!",
+      "Yaxshi dam oling!"
+    ],
+    "uyqu": [
+      "Uyqu vaqti bo'libdi shekilli 😴",
+      "Yaxshi uxlab oling!",
+      "Telefonni qo'yib dam oling 😂"
+    ],
+    "ovqat": [
+      "Ovqat haqida gap ketdimi? 😂",
+      "Yoqimli ishtaha!",
+      "Menga ham virtual ovqatdan ajrating 😄"
+    ],
+    "choy": [
+      "Choy bo'lsa meni ham chaqiring ☕😂",
+      "Choyga gap yo'q!",
+      "Bir piyola choy — yaxshi fikr ☕"
+    ],
+    "kofe": [
+      "Kofe va suhbat — zo'r kombinatsiya ☕😎",
+      "Kofe ichib oldingizmi?",
+      "Menga ham virtual kofe bering 😂"
+    ],
+    "sevaman": [
+      "Voy, romantika boshlandi ❤️😂",
+      "Sevgi yaxshi narsa!",
+      "Kim baxtli ekan? 👀"
+    ],
+    "sevgi": [
+      "Sevgi mavzusimi? ❤️",
+      "Romantika boshlandi 😂",
+      "Qiziq mavzu ekan!"
+    ],
+    "do'stim": [
+      "Labbay, do'stim! 😄",
+      "Ha, do'stim, eshitaman!",
+      "Do'stlik zo'r narsa 🤝"
+    ],
+    "aka": [
+      "Labbay, aka 😄",
+      "Ha, aka, buyuring!",
+      "Eshitaman, aka!"
+    ],
+    "uka": [
+      "Ha, uka 😄",
+      "Labbay, uka!",
+      "Nima gap, uka?"
+    ],
+    "qayerdasan": [
+      "Shu yerdaman 😎",
+      "Guruhdaman-ku 😂",
+      "Mana, shu yerdaman!"
+    ],
+    "kut": [
+      "Xo'p, kutaman 😄",
+      "Mayli, kutib turibman!",
+      "Kutish rejimi yoqildi 😂"
+    ]
+  },
+  "mention_responses": [
+    "Labbay, meni chaqirdingizmi? 😄",
+    "Eshitaman, buyuring!",
+    "Ha, do'stim, nima gap? 😊",
+    "Men shu yerdaman! 🤖",
+    "Labbay! Qanday yordam beray?",
+    "Ha, eshitaman 👀",
+    "Buyuring, Suhbatdosh Bot xizmatda 😎",
+    "Meni chaqirdingizmi? 😂",
+    "Ha, shu yerdaman!",
+    "Nima gap, do'stim? 😊",
+    "Eshitaman, gapiring!",
+    "Labbay! Savolingiz bormi?",
+    "Men tayyorman 🤖",
+    "Ha, nima bo'ldi?",
+    "Buyuring 😄"
+  ],
+  "random_responses": [
+    "Hmm, qiziq gap ekan 👀",
+    "Shunaqami? 😄",
+    "Buni eshitib men ham hayron qoldim 😂",
+    "Qiziq mavzu boshlandi!",
+    "Davom etinglar, men ham o'qib turibman 👀",
+    "Menimcha, bu mavzu hali uzoq davom etadi 😂",
+    "Guruh jonlanib qoldi 😎",
+    "Bugun gaplar qizib ketdi 🔥",
+    "Men ham suhbatga qo'shilsam maylimi? 😄",
+    "Qiziq, yana nima bo'larkin? 👀",
+    "Shu guruhda zerikib bo'lmaydi 😂",
+    "Gaplaringizni kuzatib turibman 😎",
+    "Menimcha, bu yerda nimadir qiziq bo'lyapti 😂",
+    "Davom etinglar, men shu yerdaman!",
+    "Bugun kayfiyatlar baland ekan 😄",
+    "Tinchlikmi, guruh ahli? 👀",
+    "Men ham bir fikr bildiraymi? 😎",
+    "Qiziq suhbat bo'lyapti!",
+    "Kimda yana gap bor? 😂",
+    "Guruh jimib qolmasin 😄"
+  ],
+  "users": [
+    8655133854
+  ],
+  "groups": [
+    -1003871980925
+  ]
+}
