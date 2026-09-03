@@ -9,6 +9,7 @@ Ushbu Telegram bot guruhlarda kelgan xabarlarni tahlil qilib, belgilangan kalit 
 - 🎯 **Aniq moslik (Exact Match)**: Belgilangan so'z to'liq yozilganda javob beradi (masalan, `salom` -> `Assalomu alaykum!`).
 - 🔍 **Matn ichida uchrash (Contains Match)**: Matn ichida ibora uchrashiga qarab javob beradi (masalan, `hayrli tong barchaga` -> `Xayrli tong! ☀️`).
 - 🎲 **Tasodifiy javoblar (Random Replies)**: Bitta savolga bir nechta xil javob berish imkoniyati (suhbat tabiiy ko'rinishi uchun).
+- 👋 **Yangi a'zolarni kutib olish (Welcome)**: Guruhga yangi qo'shilgan a'zolar bilan ismini aytib, chiroyli va samimiy salomlashish.
 - 💬 **Botga reply va @mention**: Foydalanuvchi botning xabariga reply qilsa yoki `@bot_nomi` deb yozsa, alohida javob qaytaradi.
 - 🛠 **Admin boshqaruvi**: Botning o'zi orqali yangi so'z va javoblarni qo'shish yoki o'chirish.
 

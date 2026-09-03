@@ -34,6 +34,37 @@ async def bot_left_group(event: ChatMemberUpdated):
     db.remove_group(event.chat.id)
     logger.info(f"Bot guruhdan chiqdi: {event.chat.title} (ID: {event.chat.id})")
 
+# Guruhga yangi a'zo qo'shilganda salomlashish
+@group_router.message(F.new_chat_members)
+async def handle_new_chat_members(message: Message, bot: Bot):
+    """Guruhga yangi foydalanuvchi qo'shilganda salomlashish."""
+    db.add_group(message.chat.id)
+    bot_info = await bot.get_me()
+    
+    # Guruhga qo'shilgan barcha a'zolarni tekshiramiz (botning o'zidan tashqari)
+    new_users = [user for user in message.new_chat_members if user.id != bot_info.id]
+    if not new_users:
+        return
+
+    # Salomlashuv matnlari variantlari (tasodifiy va qiziqarli)
+    welcome_templates = [
+        "Assalomu alaykum, {user}! 👋\n Guruhimizga xush kelibsiz! 🎉\nMarhamat, o'zingizni tanishtiring va suhbatga qo'shiling 😊",
+        "Xush kelibsiz, {user}! ✨\n Guruhimizda sizni ko'rganimizdan xursandmiz! Maroqli suhbat tilaymiz 🚀",
+        "Salom, {user}! 👋 Guruhimizga xush kelibsiz!\nBu yerda o'zingizni erkin his qiling va suhbatda faol bo'ling 💬✨",
+        "Ooo, yangi mehmon! 🎉\nXush kelibsiz, {user}! Guruhimiz ahliga qo'shilganingiz bilan tabriklaymiz! 🥳"
+    ]
+
+    for user in new_users:
+        user_mention = user.mention_html(name=user.full_name)
+        template = random.choice(welcome_templates)
+        text = template.format(user=user_mention, group_title=message.chat.title or "guruh")
+        
+        try:
+            await message.reply(text, parse_mode="HTML")
+            logger.info(f"👋 Yangi a'zo kutib olindi: {user.full_name} ({message.chat.title})")
+        except Exception as e:
+            logger.error(f"Yangi a'zoni kutib olishda xatolik: {e}")
+
 # Guruhda /start bosilganda
 @group_router.message(CommandStart())
 async def handle_group_start(message: Message, bot: Bot):
