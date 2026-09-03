@@ -1,5 +1,5 @@
 import logging
-from aiogram import Router, F
+from aiogram import Router, F, Bot
 from aiogram.filters import Command, StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
@@ -27,6 +27,9 @@ def get_admin_keyboard() -> InlineKeyboardMarkup:
             InlineKeyboardButton(text="📋 So'zlar ro'yxati", callback_data="admin_list")
         ],
         [
+            InlineKeyboardButton(text="👥 Guruhlar va Adminlik", callback_data="admin_groups")
+        ],
+        [
             InlineKeyboardButton(text="➕ Yangi so'z qo'shish", callback_data="admin_add"),
             InlineKeyboardButton(text="🗑 So'zni o'chirish", callback_data="admin_del")
         ],
@@ -42,6 +45,13 @@ def get_cancel_keyboard() -> InlineKeyboardMarkup:
         [InlineKeyboardButton(text="⬅️ Bekor qilish", callback_data="admin_menu")]
     ])
 
+def get_groups_keyboard() -> InlineKeyboardMarkup:
+    """Guruhlar ro'yxati oynasi tugmalari."""
+    return InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="🔄 Yangilash", callback_data="admin_groups")],
+        [InlineKeyboardButton(text="⬅️ Asosiy menyu", callback_data="admin_menu")]
+    ])
+
 @admin_router.message(Command("admin"))
 async def cmd_admin(message: Message, state: FSMContext):
     """Admin panelni ochish."""
@@ -52,7 +62,7 @@ async def cmd_admin(message: Message, state: FSMContext):
     await state.clear()
     text = (
         "👑 <b>Admin Boshqaruv Paneli</b>\n\n"
-        "Quyidagi tugmalar orqali botdagi so'zlar va javoblarni boshqarishingiz mumkin:"
+        "Quyidagi tugmalar orqali botdagi so'zlar va guruhlarni boshqarishingiz mumkin:"
     )
     await message.reply(text, reply_markup=get_admin_keyboard(), parse_mode="HTML")
 
@@ -66,7 +76,7 @@ async def cb_admin_menu(callback: CallbackQuery, state: FSMContext):
     await state.clear()
     text = (
         "👑 <b>Admin Boshqaruv Paneli</b>\n\n"
-        "Quyidagi tugmalar orqali botdagi so'zlar va javoblarni boshqarishingiz mumkin:"
+        "Quyidagi tugmalar orqali botdagi so'zlar va guruhlarni boshqarishingiz mumkin:"
     )
     try:
         await callback.message.edit_text(text, reply_markup=get_admin_keyboard(), parse_mode="HTML")
@@ -105,6 +115,94 @@ async def cb_admin_stats(callback: CallbackQuery):
 
     await callback.message.edit_text(format_stats_text(), reply_markup=get_cancel_keyboard(), parse_mode="HTML")
     await callback.answer()
+
+async def get_groups_report(bot: Bot) -> str:
+    """Bot qo'shilgan guruhlar va ulardagi adminlik holatini tekshiruvchi hisobot."""
+    group_ids = db.get_groups()
+    if not group_ids:
+        return "👥 <b>Bot hozircha hech qaysi guruhga qo'shilmagan.</b>"
+
+    bot_info = await bot.get_me()
+    lines = ["👥 <b>Bot a'zo bo'lgan guruhlar ro'yxati:</b>\n"]
+
+    admin_count = 0
+    member_count = 0
+    inactive_groups = []
+    item_index = 1
+
+    for chat_id in group_ids:
+        try:
+            chat = await bot.get_chat(chat_id)
+            member = await bot.get_chat_member(chat_id, bot_info.id)
+
+            if member.status in ["administrator", "creator"]:
+                admin_count += 1
+                role_badge = "👑 <b>Admin</b>"
+            elif member.status in ["member", "restricted"]:
+                member_count += 1
+                role_badge = "👤 <b>Oddiy a'zo</b>"
+            else:
+                inactive_groups.append(chat_id)
+                continue
+
+            title = chat.title or "Noma'lum guruh"
+            link = f"@{chat.username}" if chat.username else "<i>Yopiq guruh</i>"
+
+            lines.append(
+                f"{item_index}. <b>{title}</b>\n"
+                f"   ▫️ <b>Holati:</b> {role_badge}\n"
+                f"   ▫️ <b>Havola:</b> {link}\n"
+                f"   ▫️ <b>ID:</b> <code>{chat_id}</code>\n"
+            )
+            item_index += 1
+        except Exception as e:
+            logger.warning(f"Guruh ma'lumotlarini olishda xatolik ({chat_id}): {e}")
+            inactive_groups.append(chat_id)
+
+    # Chiqib ketilgan yoki mavjud bo'lmagan guruhlarni bazadan tozalash
+    for dead_id in inactive_groups:
+        db.remove_group(dead_id)
+
+    total_active = admin_count + member_count
+    if total_active == 0:
+        return "👥 <b>Bot hozirda hech qanday faol guruhda emas.</b>"
+
+    lines.append("────────────────────")
+    lines.append(
+        f"📊 <b>Xulosa:</b>\n"
+        f"• Jami faol guruhlar: <b>{total_active}</b> ta\n"
+        f"• 👑 Admin bo'lgan guruhlar: <b>{admin_count}</b> ta\n"
+        f"• 👤 Oddiy a'zo bo'lgan guruhlar: <b>{member_count}</b> ta"
+    )
+
+    return "\n".join(lines)
+
+@admin_router.message(Command("groups", "guruhlar"))
+async def cmd_groups(message: Message, bot: Bot):
+    """Guruhlar va adminlik holatini buyruq orqali tekshirish."""
+    if not is_admin(message.from_user.id):
+        return
+
+    wait_msg = await message.reply("⏳ <i>Guruhlar ma'lumotlari tekshirilmoqda...</i>", parse_mode="HTML")
+    report = await get_groups_report(bot)
+    try:
+        await wait_msg.edit_text(report, reply_markup=get_groups_keyboard(), parse_mode="HTML")
+    except Exception:
+        await message.reply(report, reply_markup=get_groups_keyboard(), parse_mode="HTML")
+
+@admin_router.callback_query(F.data == "admin_groups")
+async def cb_admin_groups(callback: CallbackQuery, bot: Bot):
+    """Guruhlar va adminlik tugmasi bosilganda."""
+    if not is_admin(callback.from_user.id):
+        await callback.answer("⛔️ Ruxsat yo'q!", show_alert=True)
+        return
+
+    await callback.answer("⏳ Guruhlar tekshirilmoqda...")
+    report = await get_groups_report(bot)
+    try:
+        await callback.message.edit_text(report, reply_markup=get_groups_keyboard(), parse_mode="HTML")
+    except Exception:
+        await callback.message.answer(report, reply_markup=get_groups_keyboard(), parse_mode="HTML")
 
 @admin_router.callback_query(F.data == "admin_list")
 async def cb_admin_list(callback: CallbackQuery):

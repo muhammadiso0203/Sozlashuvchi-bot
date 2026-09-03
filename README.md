@@ -51,10 +51,12 @@ python main.py
 Siz yangi so'zlarni 2 xil usulda qo'shishingiz mumkin:
 
 ### 1-usul: Bot orqali admin buyruqlari bilan
+- `/admin` (Tugmali admin boshqaruv paneli)
+- `/groups` yoki `/guruhlar` (Bot qo'shilgan guruhlar va adminlik holatini ko'rish)
+- `/stats` (baza statistikasini ko'rish)
 - `/add exact | salom | Va alaykum assalom!`
 - `/add contains | narxi qancha | Narxlar haqida ma'lumot olish uchun admin bilan bog'laning.`
 - `/del salom` (kalit so'zni o'chirish)
-- `/stats` (baza statistikasini ko'rish)
 
 ### 2-usul: Fayl orqali
 [data/responses.json](file:///data/responses.json) faylini ochib, istalgancha yangi so'z va javob variantlarini qo'shishingiz mumkin.

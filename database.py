@@ -97,6 +97,10 @@ class DatabaseManager:
             groups.remove(chat_id)
             self.save_data()
 
+    def get_groups(self) -> List[int]:
+        """Barcha saqlangan guruh ID lari ro'yxatini qaytaradi."""
+        return list(self._data.get("groups", []))
+
     def find_response(self, text: str, is_mentioned_or_reply: bool = False) -> Optional[str]:
         """
         Kelgan xabarga mos javobni topadi.
