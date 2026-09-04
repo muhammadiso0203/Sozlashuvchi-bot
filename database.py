@@ -97,6 +97,17 @@ class DatabaseManager:
             groups.remove(chat_id)
             self.save_data()
 
+    def get_users(self) -> List[int]:
+        """Barcha saqlangan foydalanuvchi ID lari ro'yxatini qaytaradi."""
+        return list(self._data.get("users", []))
+
+    def remove_user(self, user_id: int):
+        """Foydalanuvchini ro'yxatdan o'chiradi (botni bloklaganda)."""
+        users = self._data.get("users", [])
+        if user_id in users:
+            users.remove(user_id)
+            self.save_data()
+
     def get_groups(self) -> List[int]:
         """Barcha saqlangan guruh ID lari ro'yxatini qaytaradi."""
         return list(self._data.get("groups", []))

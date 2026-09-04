@@ -1,5 +1,8 @@
+import asyncio
 import logging
+import time
 from aiogram import Router, F, Bot
+from aiogram.exceptions import TelegramRetryAfter, TelegramForbiddenError, TelegramBadRequest
 from aiogram.filters import Command, StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
@@ -10,10 +13,11 @@ from database import db
 logger = logging.getLogger(__name__)
 admin_router = Router(name="admin_router")
 
-# FSM holatlari (So'z qo'shish va o'chirish uchun)
+# FSM holatlari
 class AdminStates(StatesGroup):
     waiting_for_add = State()
     waiting_for_del = State()
+    waiting_for_broadcast_message = State()
 
 def is_admin(user_id: int) -> bool:
     """Foydalanuvchi admin ekanligini tekshiradi."""
@@ -27,7 +31,8 @@ def get_admin_keyboard() -> InlineKeyboardMarkup:
             InlineKeyboardButton(text="📋 So'zlar ro'yxati", callback_data="admin_list")
         ],
         [
-            InlineKeyboardButton(text="👥 Guruhlar va Adminlik", callback_data="admin_groups")
+            InlineKeyboardButton(text="👥 Guruhlar va Adminlik", callback_data="admin_groups"),
+            InlineKeyboardButton(text="📢 Xabar yuborish", callback_data="admin_broadcast")
         ],
         [
             InlineKeyboardButton(text="➕ Yangi so'z qo'shish", callback_data="admin_add"),
@@ -35,6 +40,22 @@ def get_admin_keyboard() -> InlineKeyboardMarkup:
         ],
         [
             InlineKeyboardButton(text="❌ Menyuni yopish", callback_data="admin_close")
+        ]
+    ]
+    return InlineKeyboardMarkup(inline_keyboard=kb)
+
+def get_broadcast_target_keyboard() -> InlineKeyboardMarkup:
+    """Xabar yuborish auditoriyasini tanlash tugmalari."""
+    kb = [
+        [
+            InlineKeyboardButton(text="👤 Foydalanuvchilarga", callback_data="broadcast_target_users"),
+            InlineKeyboardButton(text="👥 Guruhlarga", callback_data="broadcast_target_groups")
+        ],
+        [
+            InlineKeyboardButton(text="🌐 Barchaga (User + Guruh)", callback_data="broadcast_target_all")
+        ],
+        [
+            InlineKeyboardButton(text="⬅️ Asosiy menyu", callback_data="admin_menu")
         ]
     ]
     return InlineKeyboardMarkup(inline_keyboard=kb)
@@ -329,6 +350,154 @@ async def process_del_word(message: Message, state: FSMContext):
             reply_markup=get_admin_keyboard(),
             parse_mode="HTML"
         )
+
+@admin_router.message(Command("broadcast", "send", "xabar"))
+async def cmd_broadcast(message: Message, state: FSMContext):
+    """Xabar yuborish bo'limini buyruq orqali ochish."""
+    if not is_admin(message.from_user.id):
+        return
+
+    await state.clear()
+    text = (
+        "📢 <b>Xabar yuborish bo'limi:</b>\n\n"
+        "Xabarni qaysi auditoriyaga yubormoqchisiz? Tanlang:"
+    )
+    await message.reply(text, reply_markup=get_broadcast_target_keyboard(), parse_mode="HTML")
+
+@admin_router.callback_query(F.data == "admin_broadcast")
+async def cb_admin_broadcast(callback: CallbackQuery, state: FSMContext):
+    """Xabar yuborish tugmasi bosilganda auditoriyani tanlash oynasini ko'rsatish."""
+    if not is_admin(callback.from_user.id):
+        await callback.answer("⛔️ Ruxsat yo'q!", show_alert=True)
+        return
+
+    await state.clear()
+    text = (
+        "📢 <b>Xabar yuborish bo'limi:</b>\n\n"
+        "Xabarni qaysi auditoriyaga yubormoqchisiz? Tanlang:"
+    )
+    await callback.message.edit_text(text, reply_markup=get_broadcast_target_keyboard(), parse_mode="HTML")
+    await callback.answer()
+
+@admin_router.callback_query(F.data.startswith("broadcast_target_"))
+async def cb_broadcast_target(callback: CallbackQuery, state: FSMContext):
+    """Auditoriya tanlanganda xabar kiritishni so'rash."""
+    if not is_admin(callback.from_user.id):
+        await callback.answer("⛔️ Ruxsat yo'q!", show_alert=True)
+        return
+
+    target = callback.data.replace("broadcast_target_", "")
+    await state.update_data(broadcast_target=target)
+    await state.set_state(AdminStates.waiting_for_broadcast_message)
+
+    target_names = {
+        "users": "👤 Foydalanuvchilarga (shaxsiy chat)",
+        "groups": "👥 Guruhlarga",
+        "all": "🌐 Barchaga (Foydalanuvchilar + Guruhlar)"
+    }
+    target_name = target_names.get(target, target)
+
+    text = (
+        f"🎯 <b>Tanlangan auditoriya:</b> {target_name}\n\n"
+        "Endi yubormoqchi bo'lgan xabaringizni yuboring.\n"
+        "<i>(Har qanday format qabul qilinadi: Matn, Rasm, Video, Ovozli xabar, Hujjat yoki boshqa kanaldan forward)</i>"
+    )
+    await callback.message.edit_text(text, reply_markup=get_cancel_keyboard(), parse_mode="HTML")
+    await callback.answer()
+
+@admin_router.message(AdminStates.waiting_for_broadcast_message)
+async def process_broadcast_message(message: Message, state: FSMContext, bot: Bot):
+    """Admin yuborgan xabarni tanlangan auditoriyaga tarqatish."""
+    if not is_admin(message.from_user.id):
+        return
+
+    data = await state.get_data()
+    target = data.get("broadcast_target", "all")
+    await state.clear()
+
+    # Yuboriladigan chat ID larni aniqlash
+    targets: list[int] = []
+    if target == "users":
+        targets = db.get_users()
+    elif target == "groups":
+        targets = db.get_groups()
+    elif target == "all":
+        users = set(db.get_users())
+        groups = set(db.get_groups())
+        targets = list(users | groups)
+
+    if not targets:
+        await message.reply(
+            "⚠️ Tanlangan bo'limda hech qanday qabul qiluvchi topilmadi.",
+            reply_markup=get_admin_keyboard(),
+            parse_mode="HTML"
+        )
+        return
+
+    status_msg = await message.reply(
+        f"⏳ <b>Xabar tarqatish boshlandi...</b>\n\n"
+        f"📊 Jami qabul qiluvchilar: <b>{len(targets)}</b> ta\n"
+        "<i>Iltimos kuting...</i>",
+        parse_mode="HTML"
+    )
+
+    sent_count = 0
+    failed_count = 0
+    start_time = time.time()
+
+    for chat_id in targets:
+        try:
+            await bot.copy_message(
+                chat_id=chat_id,
+                from_chat_id=message.chat.id,
+                message_id=message.message_id,
+                reply_markup=message.reply_markup
+            )
+            sent_count += 1
+            await asyncio.sleep(0.05)
+        except TelegramRetryAfter as e:
+            await asyncio.sleep(e.retry_after)
+            try:
+                await bot.copy_message(
+                    chat_id=chat_id,
+                    from_chat_id=message.chat.id,
+                    message_id=message.message_id,
+                    reply_markup=message.reply_markup
+                )
+                sent_count += 1
+            except Exception:
+                failed_count += 1
+        except (TelegramForbiddenError, TelegramBadRequest):
+            failed_count += 1
+            # Bloklagan yoki guruhdan o'chirilgan bo'lsa bazadan tozalash
+            if chat_id > 0:
+                db.remove_user(chat_id)
+            else:
+                db.remove_group(chat_id)
+        except Exception as e:
+            logger.warning(f"Xabar yuborishda xatolik ({chat_id}): {e}")
+            failed_count += 1
+
+    elapsed = round(time.time() - start_time, 2)
+    target_names = {
+        "users": "👤 Foydalanuvchilar",
+        "groups": "👥 Guruhlar",
+        "all": "🌐 Barchasi (User + Guruh)"
+    }
+    target_name = target_names.get(target, target)
+
+    result_text = (
+        "✅ <b>Xabar tarqatish yakunlandi!</b>\n\n"
+        f"🎯 <b>Auditoriya:</b> {target_name}\n"
+        f"📤 <b>Muvaffaqiyatli yuborildi:</b> {sent_count} ta\n"
+        f"❌ <b>Yetib bormadi (bloklangan/o'chgan):</b> {failed_count} ta\n"
+        f"⏱ <b>Sarflangan vaqt:</b> {elapsed} soniya"
+    )
+
+    try:
+        await status_msg.edit_text(result_text, reply_markup=get_admin_keyboard(), parse_mode="HTML")
+    except Exception:
+        await message.reply(result_text, reply_markup=get_admin_keyboard(), parse_mode="HTML")
 
 @admin_router.callback_query(F.data == "admin_close")
 async def cb_admin_close(callback: CallbackQuery, state: FSMContext):
